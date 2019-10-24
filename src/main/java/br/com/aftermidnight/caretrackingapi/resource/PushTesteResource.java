@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,13 +20,13 @@ public class PushTesteResource {
 
 	@GetMapping
 	public ResponseEntity<String> home() {
-		return ResponseEntity.ok("API");
+		return ResponseEntity.ok("tente /push/<mensagem>");
 	}
 	
-	
-	@GetMapping("/push/{msg}")
+	@GetMapping("/{msg}")
 	public ResponseEntity<String> push(@PathVariable String msg) {
-		 return msg != null ? ResponseEntity.ok(msg) : ResponseEntity.notFound().build();
+		 return msg != null ? ResponseEntity.ok(msg) : ResponseEntity.ok("tente /push/<mensagem>");
+		 
 	}	
 	
 }
